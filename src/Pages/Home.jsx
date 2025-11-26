@@ -1,8 +1,13 @@
-
+import Extra from "../components/Extra";
+import PopularSection from "../components/PopularSection";
+import Sliders from "../components/Sliders";
 const Home = () => {
     return (
         <div>
-            this is home
+            <title>Home</title>
+            <Sliders></Sliders>
+            <PopularSection></PopularSection>
+            <Extra></Extra>
         </div>
     );
 };
