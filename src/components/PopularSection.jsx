@@ -6,7 +6,7 @@ const PopularSection = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('/services.json')
+        fetch('http://localhost:3000/services')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err))
@@ -21,22 +21,22 @@ const PopularSection = () => {
                 </div>
                 <div className='grid grid-cols-1 mt-12 md:grid-cols-3 gap-4'>
                     {
-                        services.slice(0, 6).map(service =>
-                            <div key={service.serviceId} className="card bg-base-100 w-full shadow-sm hover:shadow-xl transition">
+                        services.slice(0, 3).map(service =>
+                            <div className="card bg-base-100 w-full shadow-sm hover:shadow-xl transition">
                                 <figure>
                                     <img
                                         className='h-[200px] w-full object-cover'
-                                        src={service?.image}
+                                        src={service?.imgurl}
                                         alt="Shoes" />
                                 </figure>
                                 <div className="card-body">
-                                    <h2 className="card-title text-lg">{service?.serviceName}</h2>
+                                    <h2 className="card-title text-lg">{service?.name}</h2>
                                     <div className='flex justify-between'>
-                                        <p>Rating:{service?.rating}</p>
+                                        <p>Date:{service?.date}</p>
                                         <p>Price:{service?.price}</p>
                                     </div>
                                     <div className="card-actions justify-end">
-                                        <Link to={`/details/${service?.serviceId}`}><button className="btn btn-primary">View Details</button></Link>
+                                       <Link to={`/details/${service?._id}`}><button className="btn btn-primary">View Details</button></Link>
                                     </div>
                                 </div>
                             </div>
