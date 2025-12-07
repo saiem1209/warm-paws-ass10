@@ -47,6 +47,7 @@ const Navbar = () => {
                                     <li><Link to={'/profile'}>My Profile</Link></li>
                                     <li><Link to={'/add-services'}>Add Listing</Link></li>
                                     <li><Link to={'/my-services'}>My Listing</Link></li>
+                                    <li><Link to={'/my-orders'}>My orders</Link></li>
                                 </>
                             )
                         }
