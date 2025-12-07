@@ -15,20 +15,20 @@ const Myservices = () => {
     }, [user?.email])
 
     console.log(myservices)
-    const handledelete =(id) =>{
+    const handledelete = (id) => {
         axios.delete(`http://localhost:3000/delete/${id}`)
-        .then(res=> {
-            console.log(res.data)
-            const filterData = myservices.filter(service=>service._id != id)
-            // console.log(filterData)
-            setmyServices(filterData)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(res => {
+                console.log(res.data)
+                const filterData = myservices.filter(service => service._id != id)
+                // console.log(filterData)
+                setmyServices(filterData)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
-        <div>
+        <div className='flex flex-col mx-auto items-center'>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

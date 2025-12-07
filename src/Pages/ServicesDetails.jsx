@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const ServicesDetails = () => {
 

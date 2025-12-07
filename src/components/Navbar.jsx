@@ -24,9 +24,15 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/services">Services</Link></li>
-                            <li><Link to={'/profile'}>My Profile</Link></li>
-                            <li><Link to={'add-services'}>Add Listing</Link></li>
-                            <li><Link to={'my-services'}>My Listing</Link></li>
+                            {
+                                user && (
+                                    <>
+                                        <li><Link to={'/profile'}>My Profile</Link></li>
+                                        <li><Link to={'/add-services'}>Add Listing</Link></li>
+                                        <li><Link to={'/my-services'}>My Listing</Link></li>
+                                    </>
+                                )
+                            }
                         </ul>
                     </div>
                     <div><img className="w-full h-10" src={logo} alt="" /></div>
@@ -35,9 +41,15 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link>Home</Link></li>
                         <li><Link to="/services">Services</Link></li>
-                        <li><Link to={'/profile'}>My Profile</Link></li>
-                        <li><Link to={'/add-services'}>Add Listing</Link></li>
-                        <li><Link to={'/my-services'}>My Listing</Link></li>
+                        {
+                            user && (
+                                <>
+                                    <li><Link to={'/profile'}>My Profile</Link></li>
+                                    <li><Link to={'/add-services'}>Add Listing</Link></li>
+                                    <li><Link to={'/my-services'}>My Listing</Link></li>
+                                </>
+                            )
+                        }
 
                     </ul>
                 </div>
