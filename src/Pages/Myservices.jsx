@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router';
+import axios from 'axios';
 
 const Myservices = () => {
     const [myservices, setmyServices] = useState([]);
@@ -14,6 +15,18 @@ const Myservices = () => {
     }, [user?.email])
 
     console.log(myservices)
+    const handledelete =(id) =>{
+        axios.delete(`http://localhost:3000/delete/${id}`)
+        .then(res=> {
+            console.log(res.data)
+            const filterData = myservices.filter(service=>service._id != id)
+            // console.log(filterData)
+            setmyServices(filterData)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -53,7 +66,7 @@ const Myservices = () => {
                                     </td>
                                     <td><p>{service?.price}</p></td>
                                     <td className='flex gap-2'>
-                                        <button className="btn btn-error btn-xs">Delete</button>
+                                        <button onClick={() => handledelete(service?._id)} className="btn btn-error btn-xs">Delete</button>
                                         <Link to={`/update/${service?._id}`}><button className="btn btn-primary btn-xs">Edit</button></Link>
                                     </td>
                                 </tr>
