@@ -6,27 +6,54 @@ import img3 from '../assets/dog-1.png'
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 
 const Sliders = () => {
+    const slidesData = [
+        {
+            image: img1,
+            tagline: "Find Your Furry Friend Today!",
+
+        },
+        {
+            image: img2,
+            tagline: "Adopt, Don’t Shop — Give a Pet a Home.",
+
+        },
+        {
+            image: img3,
+            tagline: "Because Every Pet Deserves Love and Care.",
+
+        },
+    ];
     return (
         <div className="hidden lg:block h-[400px] w-full">
             <Swiper
                 navigation={true}
-                modules={[Navigation]}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                modules={[Navigation, Autoplay]}
                 className="h-full w-full"
             >
-                <SwiperSlide className="h-full w-full flex">
-                    <img className="w-full h-full object-cover" src={img1} alt="" />
-                </SwiperSlide>
+                {slidesData.map((slide, index) => (
+                    <SwiperSlide key={index} className="h-full w-full relative">
 
-                <SwiperSlide className="h-full w-full flex">
-                    <img className="w-full h-full object-cover" src={img2} alt="" />
-                </SwiperSlide>
+                        <img
+                            className="w-full h-full object-cover"
+                            src={slide.image}
+                        />
 
-                <SwiperSlide className="h-full w-full flex">
-                    <img className="w-full h-full object-cover" src={img3} alt="" />
-                </SwiperSlide>
+
+                        <div className="absolute inset-0 bg-black opacity-40"></div>
+
+
+                        <div className="absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 text-white max-w-4xl mx-auto">
+                            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg leading-tight">
+                                {slide.tagline}
+                            </h1>
+
+                        </div>
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
 

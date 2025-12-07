@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import logo from '../assets/logo1.png'
+import logo from '../assets/pawmart.png'
 import { Link } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { signOut } from 'firebase/auth';
@@ -23,7 +23,7 @@ const Navbar = () => {
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/services">Services</Link></li>
+                            <li><Link to="/services">Pets & Supplies</Link></li>
                             {
                                 user && (
                                     <>
@@ -35,12 +35,12 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <div><img className="w-full h-10" src={logo} alt="" /></div>
+                    <div className='flex items-center'><img className="w-full h-12" src={logo} alt="" /> <h2 className='font-bold text-3xl text-blue-900'>PawMart</h2></div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link>Home</Link></li>
-                        <li><Link to="/services">Services</Link></li>
+                        <li><Link to="/services">Pets & Supplies</Link></li>
                         {
                             user && (
                                 <>
