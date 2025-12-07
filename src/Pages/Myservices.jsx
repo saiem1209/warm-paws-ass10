@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Myservices = () => {
     const [myservices, setmyServices] = useState([]);
 
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:3000/my-services?email=${user?.email}`)
+        fetch(`https://warm-paws-backend-bysaiem.vercel.app/my-services?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setmyServices(data))
             .catch(err => console.log(err))
@@ -16,16 +17,30 @@ const Myservices = () => {
 
     console.log(myservices)
     const handledelete = (id) => {
-        axios.delete(`http://localhost:3000/delete/${id}`)
-            .then(res => {
-                console.log(res.data)
-                const filterData = myservices.filter(service => service._id != id)
-                // console.log(filterData)
-                setmyServices(filterData)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`https://warm-paws-backend-bysaiem.vercel.app/delete/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        const filterData = myservices.filter(service => service._id != id)
+                        // console.log(filterData)
+                        setmyServices(filterData)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+                
+            }
+        });
+
     }
     return (
         <div className='flex flex-col mx-auto items-center'>

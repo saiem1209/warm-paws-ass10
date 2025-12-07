@@ -6,7 +6,7 @@ const PopularSection = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/services')
+        fetch('https://warm-paws-backend-bysaiem.vercel.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err))
@@ -17,11 +17,11 @@ const PopularSection = () => {
         <div>
             <div className='mt-8 md:px-[120px] px-[50px]'>
                 <div>
-                    <h3 className='font-bold text-3xl text-center'>Popular Winter Care Services</h3>
+                    <h3 className='font-bold text-3xl text-center'>Recent Listing</h3>
                 </div>
                 <div className='grid grid-cols-1 mt-12 md:grid-cols-3 gap-4'>
                     {
-                        services.slice(0, 3).map(service =>
+                        services.slice(0, 6).map(service =>
                             <div className="card bg-base-100 w-full shadow-sm hover:shadow-xl transition">
                                 <figure>
                                     <img

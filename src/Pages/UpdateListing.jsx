@@ -13,7 +13,7 @@ const UpdateListing = () => {
     const navigation = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/services/${id}`)
+        axios.get(`https://warm-paws-backend-bysaiem.vercel.app/services/${id}`)
             .then(res => {
                 setService(res.data)
                 setCategory(res.data.category)
@@ -45,7 +45,7 @@ const UpdateListing = () => {
             email,
             createdAt:service?.createdAt,
         }
-        axios.put(`http://localhost:3000/update/${id}`, formdata)
+        axios.put(`https://warm-paws-backend-bysaiem.vercel.app/update/${id}`, formdata)
         .then(res=>{
             console.log(res.data);
             navigation('/my-services')

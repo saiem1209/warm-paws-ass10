@@ -6,7 +6,7 @@ const Myorders = () => {
     const [myOrders, setMyOrders] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/orders')
+        axios.get('https://warm-paws-backend-bysaiem.vercel.app/orders')
             .then(res => {
                 setMyOrders(res.data)
             })

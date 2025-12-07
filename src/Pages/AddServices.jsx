@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddServices = () => {
 
@@ -28,10 +29,16 @@ const AddServices = () => {
             email,
         }
         console.log(formdata);
-        axios.post('http://localhost:3000/services', formdata)
-        .then(res=>{
-            console.log(res);
-        })
+        axios.post('https://warm-paws-backend-bysaiem.vercel.app/services', formdata)
+            .then(res => {
+                console.log(res);
+                Swal.fire({
+                    title: "Succesfully added!!",
+                    icon: "success",
+                    draggable: true
+                });
+                e.target.reset();
+            })
     }
     return (
         <div>
@@ -43,7 +50,7 @@ const AddServices = () => {
                 <h2 className="text-xl font-bold text-center mb-4">Add Product / Pet</h2>
 
                 {/* Product/Pet Name */}
-                <label  className='font-semibold py-2' >Product/ Pet Name</label>
+                <label className='font-semibold py-2' >Product/ Pet Name</label>
                 <input
                     type="text"
                     name="name"
@@ -54,7 +61,7 @@ const AddServices = () => {
                 />
 
                 {/* Category */}
-                <label  className='font-semibold py-2' >Category</label>
+                <label className='font-semibold py-2' >Category</label>
                 <select
                     name="category"
 
@@ -67,7 +74,7 @@ const AddServices = () => {
                 </select>
 
                 {/* Price */}
-                <label  className='font-semibold py-2' >Price</label>
+                <label className='font-semibold py-2' >Price</label>
                 <input
                     type="number"
                     name="price"
@@ -78,7 +85,7 @@ const AddServices = () => {
                 />
 
                 {/* Location */}
-                <label  className='font-semibold py-2' >Location</label>
+                <label className='font-semibold py-2' >Location</label>
                 <input
                     type="text"
                     name="location"
@@ -89,7 +96,7 @@ const AddServices = () => {
                 />
 
                 {/* Description */}
-                <label  className='font-semibold py-2' >Description</label>
+                <label className='font-semibold py-2' >Description</label>
                 <textarea
                     name="description"
                     placeholder="Description"
@@ -100,7 +107,7 @@ const AddServices = () => {
                 ></textarea>
 
                 {/* Image URL */}
-                <label  className='font-semibold py-2' >Image URL</label>
+                <label className='font-semibold py-2' >Image URL</label>
                 <input
                     type="url"
                     name="image"
@@ -111,7 +118,7 @@ const AddServices = () => {
                 />
 
                 {/* Date (Pick Up) */}
-                <label  className='font-semibold py-2' >Date</label>
+                <label className='font-semibold py-2' >Date</label>
                 <input
                     type="date"
                     name="date"
@@ -121,7 +128,7 @@ const AddServices = () => {
                 />
 
                 {/* Email - Readonly */}
-                <label  className='font-semibold py-2' >Email</label>
+                <label className='font-semibold py-2' >Email</label>
                 <input
                     type="email"
                     name="email"

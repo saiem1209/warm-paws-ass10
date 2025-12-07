@@ -1,10 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../assets/pawmart.png'
 import { Link } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { signOut } from 'firebase/auth';
 import auth from '../Firebase/firebase.config';
 const Navbar = () => {
+
+    const [isChecked, setIschecked] = useState(true);
+    const handletheme = () =>{
+        setIschecked(!isChecked);
+        if(isChecked){
+            document.querySelector('html').setAttribute('data-theme', 'dark')
+        }else{
+            document.querySelector('html').setAttribute('data-theme', 'light')
+        }
+    }
+
 
     const { user } = useContext(AuthContext)
 
@@ -30,6 +41,7 @@ const Navbar = () => {
                                         <li><Link to={'/profile'}>My Profile</Link></li>
                                         <li><Link to={'/add-services'}>Add Listing</Link></li>
                                         <li><Link to={'/my-services'}>My Listing</Link></li>
+                                        <li><Link to={'/my-orders'}>My orders</Link></li>
                                     </>
                                 )
                             }
@@ -54,6 +66,9 @@ const Navbar = () => {
 
                     </ul>
                 </div>
+
+                <input onClick={handletheme} type="checkbox"  defaultChecked className="toggle" />
+
                 {
                     user && <div className="navbar-end flex items-center gap-3">
                         <div

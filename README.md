@@ -1,69 +1,28 @@
-# WarmPaws – Pet Care in Winter
+🐾 PawMart: Your Community Pet Adoption & Supply Portal
+A vibrant community-driven platform connecting pet lovers with animals needing a home and providing a marketplace for essential pet supplies. Adopt, Don't Shop, and care for your furry friends with PawMart.
 
-## Project Theme
+🌐 Live Site URL
 
-A cozy winter companion platform designed for pet owners to ensure their furry friends stay warm, safe, and healthy during the cold season. Users can explore local pet care services, winter pet clothing, grooming options, and expert tips — all in one friendly interface.
+    ✅ Client-side GitHub Repository : https://github.com/saiem1209/warm-paws-backend.git
 
-## Purpose
+   ✅ Server-side GitHub Repository: https://github.com/saiem1209/warm-paws-ass10.git
 
-The purpose of this project is to provide a user-friendly SPA (Single Page Application) where pet owners can:
+   ✅ Live Website Link Client-side:https://sensational-malasada-bd5e21.netlify.app/
 
-- Browse winter pet care services.
-- Book services securely (protected route).
-- Access tips and expert advice to keep pets comfortable during winter.
-- Manage their profiles and account using authentication.
+   ✅  Live Website Link Server-side: https://warm-paws-backend-bysaiem.vercel.app/
 
-## Live URL
+✨ Key Features
+Integrated Marketplace: A single platform for both pet adoption listings (free) and pet supply products (food, accessories, care products) for sale.
 
-[Live Demo](https://vocal-toffee-216f5c.netlify.app/) 
-## GitHub Repository
+Secure Authentication: User management is handled securely with Firebase Authentication, supporting Email/Password and Google Login.
 
-## Key Features
+Protected Routes: Private routes ensure logged-in users can safely add listings, manage their own listings, and view their orders.
 
-### Navbar
+Dynamic Order System: A detailed modal for "Adopt / Order Now" captures necessary buyer information, handling quantity logic for both pets (quantity = 1) and supplies.
 
-- Logo and navigation links: Home, Services, My Profile.
-- Conditional display: Login/Register buttons if logged out; avatar and Logout if logged in.
-- Avatar tooltip shows user's display name.
+Admin Features: Users can view, update, and delete their own listings, and they can download a PDF report of all their orders using jsPDF and jsPDF-AutoTable.
 
-### Footer
+🛠️ Technologies Used
+Client-Side (Frontend): React (Vite), React Router DOM, Tailwind CSS, Firebase Authentication, React Hot Toast, jsPDF, jsPDF-AutoTable.
 
-- Contact information, social links, privacy policy.
-
-### Home Page
-
-- Hero slider using Swiper.js showcasing pets in winter outfits.
-- Popular Winter Care Services displayed as cards from JSON data:
-  - Image, Service Name, Rating, Price, “View Details” button.
-- Winter Care Tips for Pets (static or fake JSON).
-- Meet Our Expert Vets section (static data, 3–4 experts).
-- Extra section: relevant to winter pet care (e.g., "Winter Toys for Pets" or "Seasonal Pet Nutrition").
-
-### Service Details Page
-
-- Protected route: only accessible when logged in.
-- Shows all service data from JSON.
-- “Book Service” form with Name & Email → success toast on submit.
-
-### Authentication
-
-#### Login
-
-- Email & Password input, Forget Password link.
-- Social login (Google only).
-- Redirect to desired route or Home on successful login.
-- Error handling via toast notifications.
-
-#### Signup
-
-- Name, Email, Photo-URL, Password input with validation:
-  - Uppercase & lowercase letters.
-  - Minimum 6 characters.
-- Redirect to Home after successful signup.
-- Social login (Google only).
-
-### My Profile Page
-
-- Shows user info: Name, Email, Profile Image.
-- “Update Profile” button (challenge section).
-- Password toggle eye button in login/signup pages.
+Server-Side (Backend): Node.js, Express.js, MongoDB, Mongoose, optionally Firebase Admin SDK.

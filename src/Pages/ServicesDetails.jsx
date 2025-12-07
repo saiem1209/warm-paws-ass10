@@ -14,7 +14,7 @@ const ServicesDetails = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:3000/services/${id}`)
+        fetch(`https://warm-paws-backend-bysaiem.vercel.app/services/${id}`)
             .then(res => res.json())
             .then(data => {
                 setService(data);
@@ -54,7 +54,7 @@ const ServicesDetails = () => {
             date: new Date()
         }
 
-        axios.post("http://localhost:3000/orders" , formdata)
+        axios.post("https://warm-paws-backend-bysaiem.vercel.app/orders" , formdata)
         .then(res => {
             console.log(res);
         })
