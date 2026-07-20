@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
 
 .swiper {
   width: 100%;

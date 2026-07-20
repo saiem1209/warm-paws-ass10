@@ -4,36 +4,39 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 
 export const AuthContext = createContext();
 const provider = new GoogleAuthProvider();
-const AuthProvider = ({ children }) => {
 
-    const [loading, setLoading] = useState(true)
+const AuthProvider = ({ children }) => {
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     const registerwitheEmalPassword = (email, password) => {
-        console.log(email, password);
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
     const handlegooglesignin = () => {
-        return signInWithPopup(auth, provider)
-    }
+        return signInWithPopup(auth, provider);
+    };
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
-            setLoading(false)
+            setUser(currentUser);
+            setLoading(false);
+        });
 
-        })
         return () => {
-            unSubscribe()
-        }
-    }, [])
+            unSubscribe();
+        };
+    }, []);
 
     const authData = {
-        registerwitheEmalPassword, setUser, user, handlegooglesignin,loading
-    }
-    return <AuthContext value={authData}>
-        {children}
-    </AuthContext>
+        registerwitheEmalPassword,
+        setUser,
+        user,
+        handlegooglesignin,
+        loading,
+    };
+
+    return <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

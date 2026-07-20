@@ -6,12 +6,23 @@ import './index.css';
 import AuthProvider from './Provider/AuthProvider';
 import { Toaster } from 'react-hot-toast';
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
-      <Toaster />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#1f2937',
+            color: '#fff',
+            borderRadius: '999px',
+            padding: '12px 16px',
+          },
+        }}
+      />
     </AuthProvider>
   </StrictMode>,
 )
